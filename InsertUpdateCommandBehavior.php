@@ -2,12 +2,14 @@
 /**
  * InsertUpdateCommandBehavior class file.
  *
- * @package YiiInsertUpdateCommandBehavior
- * @author dZ <mail@dotzero.ru>
- * @link http://www.dotzero.ru
- * @link https://github.com/dotzero/YiiInsertUpdateCommandBehavior
- * @license MIT
- * @version 1.0 (1-nov-2012)
+ * @package InsertUpdateCommandBehavior
+ * @version 1.0
+ * @author dotzero <mail@dotzero.ru>
+ * @link http://www.dotzero.ru/
+ * @link https://github.com/dotzero/yii-insertupdate-behavior
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 /**
@@ -71,48 +73,38 @@ class InsertUpdateCommandBehavior extends CBehavior
         $placeholders = array();
         $lines = array();
 
-        foreach($columns as $name => $value)
-        {
+        foreach ($columns as $name => $value) {
             $names[] = $this->owner->connection->quoteColumnName($name);
 
-            if($value instanceof CDbExpression)
-            {
+            if ($value instanceof CDbExpression) {
                 $placeholders[] = $value->expression;
 
-                foreach($value->params as $n => $v)
-                {
+                foreach ($value->params as $n => $v) {
                     $params[$n] = $v;
                 }
-            }
-            else
-            {
+            } else {
                 $placeholders[] = ':' . $name;
                 $params[':' . $name] = $value;
             }
         }
 
-        foreach($update as $name => $value)
-        {
-            if($value instanceof CDbExpression)
-            {
+        foreach ($update as $name => $value) {
+            if ($value instanceof CDbExpression) {
                 $lines[] = $this->owner->connection->quoteColumnName($name) . '=' . $value->expression;
 
-                foreach($value->params as $n => $v)
-                {
+                foreach ($value->params as $n => $v) {
                     $params[$n] = $v;
                 }
-            }
-            else
-            {
+            } else {
                 $lines[] = $this->owner->connection->quoteColumnName($name) . '=:' . $name;
                 $params[':' . $name] = $value;
             }
         }
 
-        $sql='INSERT INTO ' . $this->owner->connection->quoteTableName($table)
+        $sql = 'INSERT INTO ' . $this->owner->connection->quoteTableName($table)
             . ' (' . implode(', ', $names) . ') VALUES ('
             . implode(', ', $placeholders) . ')'
-            . ' ON DUPLICATE KEY UPDATE '.implode(', ', $lines);
+            . ' ON DUPLICATE KEY UPDATE ' . implode(', ', $lines);
 
         return $this->owner->setText($sql)->execute($params);
     }

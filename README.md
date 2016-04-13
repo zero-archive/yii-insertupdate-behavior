@@ -1,5 +1,8 @@
 # Yii InsertUpdateCommandBehavior
 
+[![Latest Stable Version](https://poser.pugx.org/dotzero/yii-insertupdate-behavior/version)](https://packagist.org/packages/dotzero/yii-insertupdate-behavior)
+[![License](https://poser.pugx.org/dotzero/yii-insertupdate-behavior/license)](https://packagist.org/packages/dotzero/yii-insertupdate-behavior)
+
 The **InsertUpdateCommandBehavior** extension adds up some functionality to the default possibilites of yii´s **CDbCommand** implementation. Creates and executes an `INSERT` with `ON DUPLICATE KEY UPDATE` **MySQL** statement.
 
 ## Requirements:
