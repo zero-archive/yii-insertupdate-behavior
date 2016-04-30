@@ -18,10 +18,7 @@
  * INSERT with ON DUPLICATE KEY UPDATE MySQL statement.
  *
  * Requirements:
- * Yii Framework 1.1.0 or later
- *
- * Installation:
- * Extract the release file under 'protected/components'
+ * Yii Framework 1.1.14 or above
  *
  * Basic usage:
  * $command = Yii::app()->db->createCommand();

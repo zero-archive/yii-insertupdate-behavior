@@ -18,17 +18,17 @@ The **InsertUpdateCommandBehavior** extension adds up some functionality to the 
 $ composer require dotzero/yii-insertupdate-behavior
 ```
 
-### Add vendor path and import to your configuration file:
+### Add vendor path and import path to your configuration file:
 
 ```php
-    'aliases' => array(
-        ...
-        'vendor' => realpath(__DIR__ . '/../../vendor'),
-    ),
-    'import' => array(
-        ...
-        'vendor.dotzero.yii-insertupdate-behavior.*',
-    ),
+'aliases' => array(
+    ...
+    'vendor' => realpath(__DIR__ . '/../../vendor'),
+),
+'import' => array(
+    ...
+    'vendor.dotzero.yii-insertupdate-behavior.*',
+),
 ```
 
 ## Basic usage:
